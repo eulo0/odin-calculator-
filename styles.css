@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    align-items: center; 
+    height: 900px;
+    width: 900px;
+    margin: 20px auto;
+    background: gray;
+    flex-direction: column; 
+    align-content: flex-start;
+}
+
+.display {
+    margin-top: 40px;
+    background: white;
+    height: 100px;
+    width: 700px;
+    font-size: 80px;
+    text-align: right;
+    padding: 15px;
+    font-weight: 500;
+}
+
+.button-container {
+    display: flex;
+    height: 700px;
+    width: 700px;
+    margin: 50px auto;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.button-number,
+.button-operator,
+.button-equal,
+.button-clear,
+.button-decimal {
+    height: 150px; 
+    width: 150px; 
+    background: white;
+    margin: 8px 8px;
+    font-size: 72px;
+    font-weight: 450;
+}
+
