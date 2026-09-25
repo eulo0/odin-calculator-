@@ -9,7 +9,7 @@ const decimal = document.querySelector(".button-decimal");
 var firstNumber = "ERROR";
 var secondNumber = "ERROR";
 var currentOperator = "ERROR";
-var flagOnce = true; 
+var isResult = true; 
 
 function add(x,y){
     return Number(x) + Number(y);
@@ -28,7 +28,7 @@ function divide(x,y){
 }
 
 function operate (x, y, op){
-    flagOnce = true;
+    isResult = true;
     switch(op){
         case "+":
             return add(x,y);
@@ -48,11 +48,13 @@ function operate (x, y, op){
 
 numbers.forEach((number) => {
     number.addEventListener("click", () => {
-        if (flagOnce){
+        if (isResult){
             display.textContent = "";
-            flagOnce = false;
+            isResult = false;
         }
-        display.textContent += number.textContent;
+        if (display.textContent.length < 17){
+            display.textContent += number.textContent;
+        }
     });
 });
 
@@ -94,13 +96,13 @@ clear.addEventListener("click", () => {
     firstNumber = "ERROR";
     secondNumber = "ERROR";
     currentOperator = "ERROR";
-    flagOnce = true;
+    isResult = true;
     display.textContent = "";
 });
 
 erase.addEventListener("click", () => {
     var currentDisplay = display.textContent;
-    if (currentDisplay !== ""){
+    if (currentDisplay !== "" && !isResult){
         display.textContent = currentDisplay.slice(0, currentDisplay.length-1);
     }
 });
