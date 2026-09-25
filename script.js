@@ -2,6 +2,8 @@ const display = document.querySelector(".display");
 const numbers = document.querySelectorAll(".button-number");
 const equals = document.querySelector(".button-equal");
 const operators = document.querySelectorAll(".button-operator");
+const clear = document.querySelector(".button-clear");
+const erase = document.querySelector(".button-erase");
 
 var firstNumber = "ERROR";
 var secondNumber = "ERROR";
@@ -61,9 +63,6 @@ operators.forEach((operator) => {
             currentOperator = operator.textContent; 
             firstNumber = display.textContent;
             display.textContent = "";
-            console.log(`firstNumber: ${firstNumber}`)
-            console.log(`secondNumber: ${secondNumber}`)
-            console.log(`operator: ${currentOperator}`)
         }
         else {
             var nextOperator = operator.textContent;
@@ -90,5 +89,19 @@ equals.addEventListener("click", () => {
     }
 });
 
+clear.addEventListener("click", () => {
+    firstNumber = "ERROR";
+    secondNumber = "ERROR";
+    currentOperator = "ERROR";
+    flagOnce = true;
+    display.textContent = "";
+});
 
+erase.addEventListener("click", () => {
+    console.log("being pressed")
+    var currentDisplay = display.textContent;
+    if (currentDisplay !== ""){
+        display.textContent = currentDisplay.slice(0, currentDisplay.length-1);
+    }
+});
 

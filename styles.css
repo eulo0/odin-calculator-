@@ -1,12 +1,13 @@
 .container {
     display: flex;
     align-items: center; 
-    height: 900px;
-    width: 900px;
+    height: 1050px;
+    width: 800px;
     margin: 20px auto;
     background: gray;
     flex-direction: column; 
     align-content: flex-start;
+    border: 7px solid black;
 }
 
 .display {
@@ -20,11 +21,21 @@
     font-weight: 500;
 }
 
+.clear-container {
+    margin-top: 30px;
+    display: flex;
+    height: 150px; 
+    width: 700px;
+    /* background: green; */
+    align-content:flex-start;
+    justify-content: center;
+}
+
 .button-container {
     display: flex;
     height: 700px;
-    width: 700px;
-    margin: 50px auto;
+    width: 800px;
+    margin: 30px auto;
     align-content: flex-start;
     flex-wrap: wrap;
     justify-content: center;
@@ -33,7 +44,6 @@
 .button-number,
 .button-operator,
 .button-equal,
-.button-clear,
 .button-decimal {
     height: 150px; 
     width: 150px; 
@@ -43,3 +53,12 @@
     font-weight: 450;
 }
 
+.button-erase, 
+.button-clear {
+    height: 150px; 
+    width: 320px; 
+    background: white;
+    margin: 8px 8px;
+    font-size: 72px;
+    font-weight: 450;
+}
