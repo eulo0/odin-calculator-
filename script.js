@@ -4,11 +4,12 @@ const equals = document.querySelector(".button-equal");
 const operators = document.querySelectorAll(".button-operator");
 const clear = document.querySelector(".button-clear");
 const erase = document.querySelector(".button-erase");
+const decimal = document.querySelector(".button-decimal");
 
 var firstNumber = "ERROR";
 var secondNumber = "ERROR";
 var currentOperator = "ERROR";
-var flagOnce = true;
+var flagOnce = true; 
 
 function add(x,y){
     return Number(x) + Number(y);
@@ -98,10 +99,15 @@ clear.addEventListener("click", () => {
 });
 
 erase.addEventListener("click", () => {
-    console.log("being pressed")
     var currentDisplay = display.textContent;
     if (currentDisplay !== ""){
         display.textContent = currentDisplay.slice(0, currentDisplay.length-1);
+    }
+});
+
+decimal.addEventListener("click", () => {
+    if (!display.textContent.includes(".")){
+        display.textContent += ".";
     }
 });
 
