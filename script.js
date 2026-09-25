@@ -6,6 +6,7 @@ const operators = document.querySelectorAll(".button-operator");
 var firstNumber = "ERROR";
 var secondNumber = "ERROR";
 var currentOperator = "ERROR";
+var flagOnce = true;
 
 function add(x,y){
     return Number(x) + Number(y);
@@ -24,50 +25,66 @@ function divide(x,y){
 }
 
 function operate (x, y, op){
+    flagOnce = true;
     switch(op){
         case "+":
             return add(x,y);
+            break;
         case "-":
             return subtract(x,y);
+            break;
         case "*":
             return multiply(x,y);
+            break;
         case "/":
             return divide(x,y);
+            break;
     }
 }
 
 
 numbers.forEach((number) => {
     number.addEventListener("click", () => {
+        if (flagOnce){
+            display.textContent = "";
+            flagOnce = false;
+        }
         display.textContent += number.textContent;
     });
 });
 
-var counter = 0;
 
 operators.forEach((operator) => {
     operator.addEventListener("click", (event) => {
-        counter += 1;
-        event.target.style.border = "solid 6px orange"; 
-        currentOperator = operator.textContent; 
-        if (firstNumber === "ERROR"){
+        // event.target.style.border = "solid 6px orange"; 
+        if (firstNumber === "ERROR" || currentOperator === "ERROR"){
+            currentOperator = operator.textContent; 
             firstNumber = display.textContent;
             display.textContent = "";
+            console.log(`firstNumber: ${firstNumber}`)
+            console.log(`secondNumber: ${secondNumber}`)
+            console.log(`operator: ${currentOperator}`)
         }
-        else{
-            secondNumber = display.textContent 
+        else {
+            var nextOperator = operator.textContent;
+            secondNumber = display.textContent;
+            var result = operate(firstNumber, secondNumber, currentOperator);
+            display.textContent = result;
+            firstNumber = result; 
+            currentOperator = nextOperator;
+            secondNumber = "ERROR";
         }
-        console.log(counter)
     });
 });
 
 equals.addEventListener("click", () => {
-    if (secondNumber === "ERROR" && display.textContent !== ""){
+    if (secondNumber === "ERROR" || display.textContent !== ""){
         secondNumber = display.textContent;
     }
     if (firstNumber !== "ERROR" || secondNumber !== "ERROR" || currentOperator !== "ERROR"){
         var result = operate(firstNumber, secondNumber, currentOperator);
         display.textContent = result;
+        firstNumber = result;
         secondNumber = "ERROR";
         currentOperator = "ERROR";
     }
