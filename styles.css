@@ -64,3 +64,18 @@
     font-weight: 450;
     border: solid 5px black;
 }
+
+.button-number:hover,
+.button-operator:hover,
+.buton-equal:hover,
+.button-decimal:hover,
+.button-erase:hover,
+.button-clear:hover,
+.button-equal:hover {
+    background-color: aliceblue; 
+}
+
+.button-operator:focus{
+    border: solid 8px darkorange;
+    outline: none;
+}

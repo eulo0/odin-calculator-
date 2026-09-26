@@ -56,7 +56,6 @@ numbers.forEach((number) => {
 
 operators.forEach((operator) => {
     operator.addEventListener("click", () => {
-        // event.target.style.border = "solid 6px orange"; 
         setOperator(operator.textContent)
     });
 });
@@ -138,6 +137,7 @@ function setOperator(operator){
         currentOperator = nextOperator;
         secondNumber = "ERROR";
     }
+    document.getElementById(operator).focus();
 }
 
 function evaluate(){
@@ -152,3 +152,4 @@ function evaluate(){
         currentOperator = "ERROR";
     }
 }
+
